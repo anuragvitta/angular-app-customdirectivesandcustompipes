@@ -1,0 +1,29 @@
+
+  <div style="overflow-x:auto;" class="a">
+      <div class="input-group col-lg-4">
+          <span class="input-group-addon" id="basic-addon1">Filter By..</span>
+          <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Enter name" aria-label="Enter name" aria-describedby="basic-addon1">
+        </div>
+        <br>
+<table *ngIf="aspirants" class="table table-bordered">
+  <thead>
+  <tr>
+    <th>names</th>
+    <th >branch</th>
+    <th >fav.language</th>
+    <th>percentage</th>
+    <th>join date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let a of aspirants | filter:searchText">
+    <td>{{a.name | uppercase}}</td>
+    <td >{{a.branch}}</td>
+    <td >{{a.favlang}}</td>
+    <td ><button type="button" class="btn btn-primary" appMyhighlighter [value]="a.percentage" (click)="genalert(a.percentage)">{{a.percentage}}</button></td>
+    <td >{{a.joindate | date:'fullDate'}}</td>
+  </tr>
+</tbody>
+</table>
+</div>
+
